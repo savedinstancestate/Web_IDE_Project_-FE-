@@ -1,11 +1,28 @@
 <h1>Web_IDE_Project</h1> 
 
-##  <img src="https://github.com/goorm-6th-Als/Web_IDE_Project_-BE-/assets/75283640/cbf81858-0e2b-481d-bd86-2bcaee779d5c" width="30" heght="30"/> FrontEnd 레포지토리
+##  <img src="https://github.com/goorm-6th-Als/Web_IDE_Project_-BE-/assets/75283640/cbf81858-0e2b-481d-bd86-2bcaee779d5c" width="30" heght="30"/> Backend 레포지토리
 <a href="https://github.com/goorm-6th-Als/Web_IDE_Project_-BE-"> BE 레포 바로가기
 
 ## <img src="https://github.com/goorm-6th-Als/Web_IDE_Project_-BE-/assets/75283640/6a707322-49f9-4fea-bfeb-b0bc25855dea" width="30" heght="30"/> Notion
 <a href="https://www.notion.so/goorm/b567120e6b7f41ea9389210c5d6572ea)"> 팀 노션 바로가기
 
+## 👀 깃 컨벤션
+
+| 타입      | 설명                                                               |
+|-----------|--------------------------------------------------------------------|
+| `feat`    | 새로운 기능 추가                                                   |
+| `fix`     | 버그 수정                                                          |
+| `docs`    | 문서 수정                                                          |
+| `style`   | 코드 스타일 변경 (코드 포매팅, 세미콜론 누락 등) 기능적 변경 없음 |
+| `design`  | 사용자 UI 디자인 변경 (CSS 등)                                     |
+| `test`    | 테스트 코드, 리팩토링 테스트 코드 추가                             |
+| `refactor`| 코드 리팩토링                                                      |
+| `build`   | 빌드 파일 수정                                                     |
+| `ci`      | CI 설정 파일 수정                                                  |
+| `perf`    | 성능 개선                                                          |
+| `chore`   | 빌드 작업 수정, 패키지 관리자 수정 (gitignore 등 편집)            |
+| `rename`  | 파일 또는 폴더 이름만 수정할 때                                    |
+| `remove`  | 파일을 삭제할 때                                                   |
 
 ## <img src="https://github.com/goorm-6th-Als/Web_IDE_Project_-BE-/assets/75283640/45163b70-6b47-4f61-9ddc-1e5bea102cc7" width="30" heght="30"/> 팀 구성
 
