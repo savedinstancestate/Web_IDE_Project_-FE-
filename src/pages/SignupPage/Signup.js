@@ -1,0 +1,130 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Cookies from 'js-cookie';
+import useForm from "../../hooks/useForm";
+import "./Signup.css";
+
+const Signup = () => {
+  const { values, handleChange } = useForm({
+    userId: "",
+    nickname: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const [userIdAvailable, setUserIdAvailable] = useState(true);
+  const [nicknameAvailable, setNicknameAvailable] = useState(true);
+
+  const checkUserIdAvailability = async () => {
+    try {
+      const response = await axios.post(`/api/user/idcheck/${values.userId}`);
+      setUserIdAvailable(response.data.isAvailable);
+      if (!response.data.isAvailable) {
+        alert('This user ID is already taken.');
+      }
+    } catch (error) {
+      console.error('Error checking user ID availability:', error);
+      alert('Error checking user ID availability.');
+    }
+  };
+
+  const checkNicknameAvailability = async () => {
+    try {
+      const response = await axios.post(`/api/user/nicknamecheck/${values.nickname}`);
+      setNicknameAvailable(response.data.isAvailable);
+      if (!response.data.isAvailable) {
+        alert('This nickname is already taken.');
+      }
+    } catch (error) {
+      console.error('Error checking nickname availability:', error);
+      alert('Error checking nickname availability.');
+    }
+  };
+
+  const navigate = useNavigate();
+
+  const handleSignup = async (event) => {
+    event.preventDefault();
+    const { userId, nickname, password, confirmPassword } = values;
+
+    if (!userIdAvailable || !nicknameAvailable) {
+      alert("Please ensure your user ID and nickname are unique and available.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("api/user/signup",
+        { userId, nickname, password,},
+        {
+          headers: {"Content-Type": "application/json" },
+        }
+      );
+
+      if (response.status === 200) {
+        Cookies.set('accessToken', response.data.accessToken, { expires: 1/8 }); 
+        Cookies.set('refreshToken', response.data.refreshToken, { expires: 14 });
+        console.log("회원가입 성공, 닉네임: " + response.data.nickname);
+        navigate('/Home');
+      } else {
+        alert(`회원가입 실패: ${response.data.message}`);
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+      alert("An error occurred during signup.");
+    }
+  };
+
+  const fields = [
+    { name: "아이디", placeholder: "영문, 숫자 4~15자 입력", checkDuplication: true, checkFunction: checkUserIdAvailability },
+    { name: "닉네임", placeholder: "영문, 숫자, 한글 2~10자 입력", checkDuplication: true, checkFunction: checkNicknameAvailability },
+    { name: "비밀번호", placeholder: "영문, 숫자, 특수문자 8~20자 입력" },
+    { name: "비밀번호 확인", placeholder: "비밀번호 재입력" }
+  ];
+
+  return (
+    <div className="signup-container">
+      <form className="signup-form" onSubmit={handleSignup}>
+        <div className="logo">
+          <div className="logo-placeholder">Logo</div>
+        </div>
+        <h1>회원가입</h1>
+        <p>Web IDE에 오신 것을 환영합니다!</p>
+        {fields.map((field, index) => (
+            <div className="signup-block" key={index}>
+              <label className="signup-title">
+                {field.name === "confirmPassword" ? "Confirm Password" : field.name}
+              </label>
+              <input
+                type={field.name === "비밀번호" || field.name === "비밀번호 확인" ? "password" : "text"}
+                className={`signup-input-field ${field.name === "userId" && !userIdAvailable ? 'unavailable' : ''}`}
+                placeholder={field.placeholder}
+                name={field.name}
+                value={values[field.name]}
+                onChange={handleChange}
+                autoComplete={field.name}
+                autoFocus={index === 0}
+              />
+              {field.name === "userId" && !userIdAvailable &&<div className="error">이미 사용중인 아이디입니다.</div>}
+              {field.name === "nickname" && !nicknameAvailable && <div className="error">이미 사용중인 닉네임입니다.</div>}
+              {field.checkDuplication && (
+            <button type="button" className="check-availability-button" onClick={field.checkFunction}>
+              중복확인
+            </button>
+          )}
+            </div>
+          )
+        )}
+        <button type="submit" className="signup-button">확인</button>
+      </form>
+
+      
+    </div>
+  );
+};
+export default Signup;
