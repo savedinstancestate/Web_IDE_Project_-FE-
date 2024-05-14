@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -90,8 +90,8 @@ const Login = () => {
 
       if (response.status === 200) {
         setLoginCheck(false);
-        Cookies.set("accessToken", response.data.accessToken, { expires: 1 / 8 });
-        Cookies.set("refreshToken", response.data.refreshToken, { expires: 14 });
+        localStorage.setItem("accessToken", response.data.accessToken);
+        Cookies.set("refreshToken", response.data.refreshToken);
         console.log("로그인 성공, 아이디:" + formValues.userId);
         navigate("/Home");
       } else {

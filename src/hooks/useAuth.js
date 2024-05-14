@@ -2,20 +2,20 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-
+           
 const useAuth = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const accessToken = Cookies.get('accessToken');
+        const accessToken = localStorage.getItem('accessToken');
         const refreshToken = Cookies.get('refreshToken');
 
         if (!accessToken || !refreshToken) {
             navigate('/login');
         } else {
-            const checkTokenExpiration = async () => {
+            const checkTokenExpiration = async () => { 
                 try {
-                    const response = await axios.get('/api/user/verifyToken', {
+                    const response = await axios.post('/api/user/verifyToken', {}, {
                         headers: {
                             Authorization: `Bearer ${accessToken}`
                         }
@@ -37,10 +37,14 @@ const useAuth = () => {
 
             const refreshAccessToken = async (refreshToken) => {
                 try {
-                    const response = await axios.post('/api/user/refreshToken', { refreshToken });
+                    const response = await axios.post('/api/user/refreshToken', {}, {
+                        headers: {
+                            Authorization: `Bearer ${refreshToken}`
+                        }
+                    });
                     const { accessToken, refreshToken: newRefreshToken } = response.data;
-                    Cookies.set('accessToken', accessToken, { expires: 1/8 }); 
-                    Cookies.set('refreshToken', newRefreshToken, { expires: 14 }); 
+                    localStorage.setItem('accessToken', accessToken); 
+                    Cookies.set('refreshToken', newRefreshToken); 
                     return true;
                 } catch (error) {
                     console.error('Failed to refresh token:', error);
@@ -48,7 +52,7 @@ const useAuth = () => {
                 }
             };
 
-            checkTokenExpiration().then(isValid => {
+            checkTokenExpiration().then(isValid => { 
                 if (!isValid) {
                     navigate('/login');
                 }
