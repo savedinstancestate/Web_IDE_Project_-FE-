@@ -1,0 +1,12 @@
+.sidebar-items {
+    background-color: #1b2240;
+    width: 15vw;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.sidebar-item {
+    margin-bottom: 5px;
+    color: white;
+    cursor: pointer;
+}
