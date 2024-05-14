@@ -1,0 +1,150 @@
+.login-container {
+    display: flex;
+    margin: 0vw;
+    width: 100vw; /* 전체 뷰포트 너비 사용 */
+    height: 100vh; /* 전체 뷰포트 높이 사용 */
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
+    overflow-y: hidden; /* 가로 스크롤 방지 */
+}
+
+.panel {
+    background-color: #1b2240;
+    color: white;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25vh; /* 동적 패딩 설정 */
+}
+
+.login-form {
+    background-color: white;
+    color: black;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5vh; /* 동적 패딩 설정 */
+}
+
+.icon-box {
+    width: 14vw; /* 뷰포트 너비에 따라 크기 조정 */
+    height: 14vw; /* 너비와 동일하게 높이 설정 */
+    background-color: white;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e1e1e1;
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+.description {
+    text-align: center;
+    font-size: 1.2vw;
+    color: #DDDDDD;
+}
+
+.logo-box {
+    width: 6vw; /* 뷰포트 너비에 따라 크기 조정 */
+    height: 6vw; /* 너비와 동일하게 높이 설정 */
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e1e1e1;
+    margin-bottom: 30px;
+}
+
+.login-title {
+    font-size: 2vw;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.login-input-field {
+    width: 80%;
+    height: 8%;
+    padding: 1vw;
+    margin-bottom: 3vh;
+    box-sizing: border-box;
+    border: 2px solid #2835a8;
+    border-radius: 10px;
+    font-size: 1vw;
+}
+
+input:focus {
+    box-shadow: 0 0 4px #B0E2FF; /* 클릭 시 연한 하늘색 그림자 */
+  }
+
+.login-button {
+    width: 80%;
+    height: 8%;
+    background-color: #2835a8;
+    color: white;
+    padding: 1vw;
+    border: none;
+    border-radius:10px;
+    font-size: 1vw;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.signup-div {
+    width: 80%;
+    color: #929292;
+    font-size: 1vw;
+    margin-top: 10px;
+}
+
+.signup-link {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.signup-link a {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: no;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 1300px) {
+
+    .title, .description, .login-title, .input-field, .login-button, .signup-link {
+        font-size: 1.2vw;
+    }
+
+    .input-field, .login-button {
+        padding: 2vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .icon, .logo {
+        font-size: 10vw;
+    }
+
+    .title, .description, .login-title, .input-field, .login-button, .signup-link {
+        font-size: 8vw;
+    }
+
+    .input-field, .login-button {
+        padding: 8vw;
+    }
+}
