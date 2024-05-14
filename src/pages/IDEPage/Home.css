@@ -1,0 +1,10 @@
+.home {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.editor-position {
+    width: 85vw;
+    background-color: black;
+}
