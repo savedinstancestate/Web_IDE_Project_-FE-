@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import Editor from '@monaco-editor/react';
 import { Button, Form } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import './editor.css';
 
-const IDEEditor = ({ value, onChange, selectedFile, readOnly }) => {
+const IDEEditor = ({ value, onChange, selectedFile, readOnly, onExecute }) => {
     const [inputValue, setInputValue] = useState('');
 
-    // 저장 버튼을 클릭했을 때 실행되는 함수
     const handleSave = async () => {
-        if (!selectedFile) return; // 파일이 선택되지 않은 경우 함수 종료
+        if (!selectedFile) return;
         try {
             const response = await axios.put(`/project/file/${selectedFile.fileId}`, {
                 fileId: selectedFile.fileId,
@@ -21,14 +22,13 @@ const IDEEditor = ({ value, onChange, selectedFile, readOnly }) => {
         }
     };
 
-    // 실행 버튼을 클릭했을 때 실행되는 함수
     const handleExecute = async () => {
         try {
             const response = await axios.post('/project', {
                 file: value,
                 input: inputValue,
             });
-            console.log(response.data);
+            onExecute(response.data);
         } catch (error) {
             console.error('Error executing code:', error);
         }
@@ -37,9 +37,7 @@ const IDEEditor = ({ value, onChange, selectedFile, readOnly }) => {
     const editorOptions = {
         fontFamily: 'Consolas, monospace',
         fontSize: 14,
-        minimap: {
-            enabled: true,
-        },
+        minimap: { enabled: true },
         automaticLayout: true,
         lineNumbers: 'on',
         autoIndent: 'advanced',
@@ -49,7 +47,7 @@ const IDEEditor = ({ value, onChange, selectedFile, readOnly }) => {
             autoFindInSelection: 'always',
             addExtraSpaceOnTop: true,
         },
-        readOnly: readOnly, // 읽기 전용 상태 설정
+        readOnly: readOnly,
     };
 
     const handleEditorWillMount = (monaco) => {
@@ -66,17 +64,17 @@ const IDEEditor = ({ value, onChange, selectedFile, readOnly }) => {
     };
 
     return (
-        <div>
-            <div style={{ marginBottom: '10px' }}>
-                <Button variant="primary" onClick={handleExecute} style={{ marginRight: '10px' }}>
-                    실행
+        <div className="editor-container">
+            <div className="button-container">
+                <Button variant="outline-success" size="sm" onClick={handleExecute} className="run-button">
+                    Run
                 </Button>
-                <Button variant="secondary" onClick={handleSave}>
-                    저장
+                <Button variant="outline-warning" size="sm" onClick={handleSave}>
+                    Save
                 </Button>
             </div>
             <Editor
-                height="500px"
+                height="calc(100% - 80px)"
                 defaultLanguage="java"
                 value={value}
                 onChange={onChange}
@@ -84,19 +82,14 @@ const IDEEditor = ({ value, onChange, selectedFile, readOnly }) => {
                 beforeMount={handleEditorWillMount}
                 onMount={handleEditorDidMount}
             />
-            <Form>
+            <Form className="input-form">
                 <Form.Group controlId="formInput">
-                    <Form.Label>인풋</Form.Label>
                     <Form.Control
                         type="text"
-                        placeholder="인풋을 입력하세요."
+                        placeholder="Enter input"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
-                        style={{
-                            backgroundColor: '#282c34',
-                            color: 'white',
-                            borderColor: '#313131',
-                        }}
+                        className="input-field"
                     />
                 </Form.Group>
             </Form>
