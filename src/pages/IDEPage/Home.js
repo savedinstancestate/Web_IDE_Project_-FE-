@@ -13,12 +13,12 @@ const Home = () => {
 
     const handleSelectFile = (file) => {
         setSelectedFile(file);
-        setEditorContent(file.content);
+        setEditorContent(file.fileCode); // 변경: file.fileCode로 설정
         setReadOnly(false);
     };
 
     const handleExecute = (output) => {
-        setResult(output);
+        setResult(output.result); // output 객체의 result 값을 설정
     };
 
     return (
