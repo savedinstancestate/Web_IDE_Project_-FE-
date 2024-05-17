@@ -1,21 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import withAuth from '../../components/withAuth';
+//import withAuth from '../../components/withAuth';
 import './myPage.css';
 
 const UserInfo = () => {
-  const [nickname, setNickname] = useState('제로'); // 초기 닉네임
-  const [newNickname, setNewNickname] = useState(''); // 새로운 닉네임 입력 상태
-  const [error, setError] = useState(''); // 닉네임 오류 메시지 상태
-  const [passwordError, setPasswordError] = useState(''); // 비밀번호 오류 메시지 상태
-  const [oldPassword, setOldPassword] = useState(''); // 기존 비밀번호 상태
-  const [newPassword, setNewPassword] = useState(''); // 새 비밀번호 상태
-  const [confirmPassword, setConfirmPassword] = useState(''); // 비밀번호 확인 상태
+  const [nickname, setNickname] = useState(''); // 초기화 없이 빈 문자열로 시작
+  const [newNickname, setNewNickname] = useState('');
+  const [userId, setUserId] = useState(''); // 사용자 ID 저장
+  const [error, setError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  // 사용자 정보를 불러오는 함수
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        // 토큰을 포함한 API 요청으로 사용자 정보 불러오기
+        const { data } = await axios.get('/api/user/mypage', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}` // 로컬 스토리지에서 토큰 가져오기
+          }
+        });
+        setNickname(data.nickname); // 받아온 닉네임으로 상태 업데이트
+        setUserId(data.id); // 받아온 사용자 ID로 상태 업데이트
+      } catch (error) {
+        console.error('사용자 정보 불러오기 실패:', error);
+      }
+    };
+    fetchUserInfo();
+  }, []);
 
   // 서버에서 닉네임 중복 확인
   const checkNicknameAvailability = async (nickname) => {
     try {
-      const response = await axios.post('/api/nicknamecheck', { nickname });
+      const response = await axios.post('/api/user/nicknamecheck', { nickname });
       if (response.status === 200) {
         return true;
       } else {
@@ -27,14 +47,38 @@ const UserInfo = () => {
     }
   };
 
-  // 기존 비밀번호 확인
+  const handleNicknameChange = async () => {
+    if (newNickname.trim() !== '') {
+      const isAvailable = await checkNicknameAvailability(newNickname);
+      if (isAvailable) {
+        try {
+          const response = await axios.put('/api/user/nicknamecheck', { newNickname });
+          if (response.status === 200) {
+            setNickname(newNickname);
+            setNewNickname('');
+            setError('');
+            window.alert('닉네임이 성공적으로 변경되었습니다.');
+          } else {
+            setError('닉네임 변경 실패');
+          }
+        } catch (error) {
+          console.error('Error updating nickname:', error);
+          setError('닉네임 변경 중 오류가 발생했습니다.');
+        }
+      } else {
+        setError('닉네임 변경 중 오류가 발생했습니다.');
+      }
+    }
+  };
+
+  // 서버에서 기존 비밀번호 확인
   const checkOldPassword = async (password) => {
     try {
-      const response = await axios.post('/api/passwordcheck', { password });
+      const response = await axios.post('/api/user/passwordcheck', { password });
       if (response.status === 200) {
-        return true; // 비밀번호 일치
+        return true; 
       } else {
-        return false; // 비밀번호 불일치
+        return false; 
       }
     } catch (error) {
       console.error('Error checking old password:', error);
@@ -51,7 +95,7 @@ const UserInfo = () => {
     const isOldPasswordCorrect = await checkOldPassword(oldPassword);
     if (isOldPasswordCorrect) {
       try {
-        const response = await axios.post('/api/updatePassword', { newPassword });
+        const response = await axios.put('/api/user/passwordcheck', { newPassword });
         if (response.status === 200) {
           setOldPassword('');
           setNewPassword('');
@@ -73,7 +117,7 @@ const UserInfo = () => {
   return (
     <div className="user-info-container">
       <div className="user-info-form">
-        <p className="user-info-title">{nickname} 님의 회원정보</p>
+        <p className="user-info-title">{userId} 님의 회원정보</p>
         <h3>닉네임 변경</h3>
         <div className="input-group">
           <input
@@ -82,7 +126,7 @@ const UserInfo = () => {
             value={newNickname || nickname}
             onChange={(e) => setNewNickname(e.target.value)}
           />
-          <button className="nickname-change-button" onClick={() => checkNicknameAvailability(newNickname)}>확인</button>
+          <button className="nickname-change-button" onClick={() => handleNicknameChange(newNickname)}>확인</button>
         </div>
         {error && <p className="error-message">{error}</p>}
         <h3>비밀번호 변경</h3>
@@ -113,4 +157,4 @@ const UserInfo = () => {
   );
 };
 
-export default withAuth(UserInfo);
+export default UserInfo;
