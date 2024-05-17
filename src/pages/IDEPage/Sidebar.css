@@ -1,0 +1,65 @@
+.sidebar-items {
+    background-color: #1b2240;
+    width: 15vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.sidebar-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.file-input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #282c34;
+    color: white;
+    border-color: #313131;
+    width: 100%;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sidebar-button {
+    margin-right: 10px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.delete-button {
+    margin-left: 10px;
+}
+
+@media (max-width: 1200px) {
+    .sidebar-items {
+        width: 20vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar-items {
+        width: 30vw;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar-items {
+        width: 40vw;
+    }
+}
