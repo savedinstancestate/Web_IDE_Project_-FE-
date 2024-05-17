@@ -1,7 +1,7 @@
 <h1>Web_IDE_Project</h1> 
 
 ##  <img src="https://github.com/goorm-6th-Als/Web_IDE_Project_-BE-/assets/75283640/cbf81858-0e2b-481d-bd86-2bcaee779d5c" width="30" heght="30"/> Backend 레포지토리
-<a href="https://github.com/goorm-6th-Als/Web_IDE_Project_-BE-"> BE 레포 바로가기
+<a href="https://github.com/goorm-6th-Als/Web_IDE_Project_BE"> BE 레포 바로가기
 
 ## <img src="https://github.com/goorm-6th-Als/Web_IDE_Project_-BE-/assets/75283640/6a707322-49f9-4fea-bfeb-b0bc25855dea" width="30" heght="30"/> Notion
 <a href="https://www.notion.so/goorm/b567120e6b7f41ea9389210c5d6572ea)"> 팀 노션 바로가기
