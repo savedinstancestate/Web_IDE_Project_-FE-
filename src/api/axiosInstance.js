@@ -8,7 +8,7 @@ const history = createBrowserHistory();
 
 // axios 인스턴스 생성
 const axiosInstance = axios.create({
-  baseURL: '/api/user', // API의 기본 URL
+  baseURL: '/api/user', 
   headers: { 'Content-Type': 'application/json' },
 });
 
