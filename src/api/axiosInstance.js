@@ -1,4 +1,4 @@
-// Axios 인스턴스 생성, 액세스 토큰 관리
+// 모든 API 요청을 중앙에서 관리
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { createBrowserHistory } from 'history';
@@ -12,7 +12,7 @@ const axiosInstance = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-// 액세스 토큰을 로컬 스토리지에서 가져와 기본 헤더에 설정
+// 요청 인터셉터: 액세스 토큰을 기본 헤더에 설정
 axiosInstance.interceptors.request.use(
   (config) => {
     const accessToken = localStorage.getItem('accessToken');
@@ -21,10 +21,11 @@ axiosInstance.interceptors.request.use(
     }
     return config;
   },
-  (error) => Promise.reject(error) // Promise: js에서 비동기 작업을 처리하기 위한 객체
+  // Promise: js에서 비동기 작업을 처리하기 위한 객체
+  (error) => Promise.reject(error) 
 );
 
-// 응답 인터셉터 에러 처리, 인증 오류 발생 시 토큰 갱신 및 재요청
+// 응답 인터셉터: 에러 처리, 인증 오류 발생 시 토큰 갱신 및 재요청
 axiosInstance.interceptors.response.use(
   (response) => response, // 응답이 성공적일 때 그대로 반환
 
