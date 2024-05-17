@@ -23,13 +23,12 @@ const Panel = () => {
 
 const LoginContainer = ({
   userId,
-  setId,
   password,
-  setPassword,
   loginCheck,
   handleLogin,
   loading,
   navigateToSignup,
+  handleInputChange
 }) => (
   <form className="login-form" onSubmit={handleLogin}>
     <div className="logo-box">
@@ -40,9 +39,10 @@ const LoginContainer = ({
     <input
       type="text"
       id="userId"
+      name="userId"
       value={userId}
       className="login-input-field"
-      onChange={(e) => setId(e.target.value)}
+      onChange={handleInputChange}
       placeholder="아이디를 입력하세요."
       autoFocus
     />
@@ -50,9 +50,10 @@ const LoginContainer = ({
     <input
       type="password"
       id="password"
+      name="password"
       value={password}
       className="login-input-field"
-      onChange={(e) => setPassword(e.target.value)}
+      onChange={handleInputChange}
       placeholder="비밀번호를 입력하세요."
     />
 
@@ -93,7 +94,7 @@ const Login = () => {
         localStorage.setItem("accessToken", response.data.accessToken);
         Cookies.set("refreshToken", response.data.refreshToken);
         console.log("로그인 성공, 아이디:" + formValues.userId);
-        navigate("/Home");
+        navigate("/project");
       } else {
         setLoginCheck(true);
       }
@@ -110,13 +111,12 @@ const Login = () => {
       <Panel />
       <LoginContainer
         userId={formValues.userId}
-        setId={handleInputChange}
         password={formValues.password}
-        setPassword={handleInputChange}
         loginCheck={loginCheck}
         handleLogin={handleLogin}
         loading={loading}
         navigateToSignup={() => navigate('/signup')}
+        handleInputChange={handleInputChange}
       />
     </div>
   );
