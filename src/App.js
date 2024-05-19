@@ -5,6 +5,7 @@ import Signup from './pages/SignupPage/Signup';
 import UserInfo from './pages/UserPage/myPage';
 import Chat from './pages/IDEPage/chat';
 import Home from './pages/IDEPage/Home';
+import axios from "axios";
 
 const App = () => {
     return (

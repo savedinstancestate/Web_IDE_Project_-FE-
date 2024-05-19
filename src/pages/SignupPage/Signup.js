@@ -22,42 +22,54 @@ const Signup = () => {
 
   const checkUserIdAvailability = async () => {
     try {
-      const response = await axios.post(`/api/user/idcheck/${values.userId}`);
+      const response = await axios.post(
+        "/api/user/idcheck",
+        { userId: values.userId },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       if (response.status === 200) {
         setUserIdAvailable(true);
         setUserIdChecked(true);
         setUserIdDisabled(true);
-        alert('This user ID is available.');
+        alert('사용 가능한 아이디입니다.');
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setUserIdAvailable(false);
         setUserIdChecked(true);
-        alert('This user ID is already taken.');
+        alert('사용 불가능한 아이디입니다.');
       } else {
-        console.error('Error checking user ID availability:', error);
-        alert('Error checking user ID availability.');
+        console.error('아이디 사용 가능 여부를 확인하는 중 오류가 발생했습니다.: ', error);
+        alert('오류가 발생했습니다. 다시 시도해 주세요.');
       }
     }
   };
 
   const checkNicknameAvailability = async () => {
     try {
-      const response = await axios.post(`/api/user/nicknamecheck/${values.nickname}`);
+      const response = await axios.post(
+        "/api/user/nicknamecheck",
+        { nickname: values.nickname },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       if (response.status === 200) {
         setNicknameAvailable(true);
         setNicknameChecked(true);
         setNicknameDisabled(true);
-        alert('This nickname is available.');
+        alert('사용 가능한 닉네임입니다.');
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setNicknameAvailable(false);
         setNicknameChecked(true);
-        alert('This nickname is already taken.');
+        alert('사용 불가능한 닉네임입니다.');
       } else {
-        console.error('Error checking nickname availability:', error);
-        alert('Error checking nickname availability.');
+        console.error('닉네임 사용 가능 여부를 확인하는 중 오류가 발생했습니다.: ', error);
+        alert('오류가 발생했습니다. 다시 시도해 주세요.');
       }
     }
   };
@@ -68,12 +80,12 @@ const Signup = () => {
     event.preventDefault();
 
     if (!userIdChecked || !nicknameChecked) {
-      alert("아이디와 닉네임 중복 확인을 완료해주세요.");
+      alert("아이디와 닉네임 중복확인을 완료해주세요.");
       return;
     }
 
     if (!userIdAvailable || !nicknameAvailable) {
-      alert("아이디 또는 닉네임이 사용 중입니다.");
+      alert("아이디와 닉네임 중복확인을 완료해주세요.");
       return;
     }
 
@@ -107,10 +119,10 @@ const Signup = () => {
   };
 
   const fields = [
-    { name: "userId", placeholder: "영문, 숫자 4~15자 입력", checkDuplication: true, checkFunction: checkUserIdAvailability },
-    { name: "nickname", placeholder: "영문, 숫자, 한글 2~10자 입력", checkDuplication: true, checkFunction: checkNicknameAvailability },
-    { name: "password", placeholder: "영문, 숫자, 특수문자 8~20자 입력" },
-    { name: "confirmPassword", placeholder: "비밀번호 재입력" }
+    { name: "userId", label: "아이디", placeholder: "영문, 숫자 4~15자 입력", checkDuplication: true, checkFunction: checkUserIdAvailability },
+    { name: "nickname", label: "닉네임", placeholder: "영문, 숫자, 한글 2~10자 입력", checkDuplication: true, checkFunction: checkNicknameAvailability },
+    { name: "password", label: "비밀번호", placeholder: "영문, 숫자, 특수문자 8~20자 입력" },
+    { name: "confirmPassword", label: "비밀번호 확인", placeholder: "비밀번호 재입력" }
   ];
 
   return (
@@ -124,7 +136,7 @@ const Signup = () => {
         {fields.map((field, index) => (
           <div className="signup-block" key={index}>
             <label className="signup-title">
-              {field.name === "confirmPassword" ? "Confirm Password" : field.name}
+              {field.label === "confirmPassword" ? "Confirm Password" : field.label}
             </label>
             <input
               type={field.name === "password" || field.name === "confirmPassword" ? "password" : "text"}
