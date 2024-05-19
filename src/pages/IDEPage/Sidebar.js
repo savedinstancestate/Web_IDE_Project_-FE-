@@ -15,6 +15,8 @@ const Sidebar = ({ onSelectFile }) => {
     // const jwtToken = 'your-jwt-token-here';
     const [showModal, setShowModal] = useState(false);
     const [deleteCandidate, setDeleteCandidate] = useState(null);
+    const [alertVisible, setAlertVisible] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
 
     useEffect(() => {
         axios
@@ -39,35 +41,42 @@ const Sidebar = ({ onSelectFile }) => {
     }, []);
 
     const createFile = () => {
-        if (nameInput.trim() !== '') {
-            axios
-                .post(
-                    '/project/file',
-                    {
-                        fileName: { fileName: nameInput },
-                    }
-                    // {
-                    //     headers: {
-                    //         Authorization: `Bearer ${jwtToken}`, // JWT 토큰을 포함한 Authorization 헤더 추가
-                    //     },
-                    // }
-                )
-                .then((response) => {
-                    if (response.status === 200) {
-                        console.log('New file created:', response.data);
-                        setFiles([...files, response.data.data]);
-                    }
-                })
-                .catch((error) => {
-                    if (error.response && error.response.status === 400) {
-                        alert('로그인 후 이용하실 수 있습니다.');
-                    } else {
-                        console.error('Error creating new file:', error);
-                    }
-                });
-            setNameInput('');
-            setShowInput(false);
+        if (nameInput.trim() === '') {
+            setAlertMessage('파일 이름을 입력해주세요.');
+            setAlertVisible(true);
+            return;
         }
+
+        // 파일 이름이 .java로 끝나는지 확인
+        if (!nameInput.endsWith('.java')) {
+            setAlertMessage('파일 이름은 반드시 .java 확장자를 포함해야 합니다.');
+            setAlertVisible(true);
+            return; // 함수 종료
+        }
+
+        // 파일 생성 API 호출
+        axios
+            .post(
+                '/project/file',
+                { fileName: nameInput }
+                // { headers: { Authorization: `Bearer ${jwtToken}` } }
+            )
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log('New file created:', response.data);
+                    setFiles([...files, response.data.data]);
+                }
+            })
+            .catch((error) => {
+                if (error.response && error.response.status === 400) {
+                    alert('로그인 후 이용하실 수 있습니다.');
+                } else {
+                    console.error('Error creating new file:', error);
+                }
+            });
+
+        setNameInput(''); // 입력 필드 초기화
+        setShowInput(false); // 입력 필드 숨기기
     };
 
     const confirmDelete = (fileId) => {
@@ -125,6 +134,11 @@ const Sidebar = ({ onSelectFile }) => {
 
     return (
         <div className="sidebar-items">
+            {alertVisible && (
+                <Alert variant="danger" style={{ fontSize: '12px' }} onClose={() => setAlertVisible(false)} dismissible>
+                    {alertMessage}
+                </Alert>
+            )}
             {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
             <div className="button-group">
                 <Button variant="outline-light" size="sm" onClick={() => setShowInput(true)} className="sidebar-button">
