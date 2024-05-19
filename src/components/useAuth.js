@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import refreshAccessToken from '../api/refreshAccessToken'; // 가져오기
+import Cookies from 'js-cookie';
 
 const useAuth = () => {
     const navigate = useNavigate();

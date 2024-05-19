@@ -4,7 +4,7 @@ import IDEEditor from './editor';
 import Console from './Console';
 import './Home.css';
 import './Sidebar.css';
-import Header from '../components/header';
+import Header from '../../components/Header';
 import ChatModal from './ChatModal';
 
 const Home = () => {
