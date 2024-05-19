@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button, Form, Alert } from 'react-bootstrap';
+import { Button, Form, Alert, Modal } from 'react-bootstrap';
 import './Sidebar.css';
 import withAuth from '../../components/withAuth';
+import { VscNewFile } from 'react-icons/vsc';
+import { IoTrashOutline } from 'react-icons/io5';
 
 const Sidebar = ({ onSelectFile }) => {
     const [files, setFiles] = useState([]);
@@ -11,10 +13,12 @@ const Sidebar = ({ onSelectFile }) => {
     // const [selectedFiles, setSelectedFiles] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     // const jwtToken = 'your-jwt-token-here';
+    const [showModal, setShowModal] = useState(false);
+    const [deleteCandidate, setDeleteCandidate] = useState(null);
 
     useEffect(() => {
         axios
-            .get('https://f60f01f3-6e14-4580-8fed-fd8dc5a682e1.mock.pstmn.io/project', {
+            .get('/project', {
                 // headers: {
                 //     Authorization: `Bearer ${jwtToken}`,
                 // },
@@ -38,9 +42,9 @@ const Sidebar = ({ onSelectFile }) => {
         if (nameInput.trim() !== '') {
             axios
                 .post(
-                    'https://f60f01f3-6e14-4580-8fed-fd8dc5a682e1.mock.pstmn.io/project/file',
+                    '/project/file',
                     {
-                        fileName: { fileName: nameInput }, // API 명세에 맞춘 수정
+                        fileName: { fileName: nameInput },
                     }
                     // {
                     //     headers: {
@@ -51,12 +55,12 @@ const Sidebar = ({ onSelectFile }) => {
                 .then((response) => {
                     if (response.status === 200) {
                         console.log('New file created:', response.data);
-                        setFiles([...files, response.data.data]); // 성공 응답 처리
+                        setFiles([...files, response.data.data]);
                     }
                 })
                 .catch((error) => {
                     if (error.response && error.response.status === 400) {
-                        alert('로그인 후 이용하실 수 있습니다.'); // 상태 코드 400일 때 오류 메시지 처리
+                        alert('로그인 후 이용하실 수 있습니다.');
                     } else {
                         console.error('Error creating new file:', error);
                     }
@@ -66,44 +70,35 @@ const Sidebar = ({ onSelectFile }) => {
         }
     };
 
-    const deleteFile = async (fileId) => {
-        if (!fileId) return; // 파일 ID가 제공되지 않았다면 함수를 종료
+    const confirmDelete = (fileId) => {
+        setDeleteCandidate(fileId);
+        setShowModal(true);
+    };
+
+    const handleDelete = async () => {
+        if (!deleteCandidate) return;
         try {
-            const response = await axios.delete(
-                `https://f60f01f3-6e14-4580-8fed-fd8dc5a682e1.mock.pstmn.io/project/file/${fileId}`,
-                {
-                    // headers: {
-                    //     Authorization: `Bearer ${jwtToken}`, // JWT 토큰을 포함한 Authorization 헤더 추가
-                    // },
-                    data: {
-                        fileId: fileId, // 요청 바디에 fileId 포함
-                    },
-                }
-            );
+            const response = await axios.delete(`/project/file/${deleteCandidate}`, {
+                // headers: { Authorization: `Bearer ${jwtToken}` },
+                data: { fileId: deleteCandidate },
+            });
             if (response.status === 200) {
-                console.log('File deleted successfully:', response.data.message);
-                // alert('파일 삭제 성공'); // 사용자에게 성공 메시지 표시
-                // 성공적으로 파일을 삭제했다면 파일 목록에서 해당 파일을 제거
-                setFiles(files.filter((file) => file.fileId !== fileId));
-            } else {
-                console.error('Unexpected status code:', response.status);
+                setFiles(files.filter((file) => file.fileId !== deleteCandidate));
             }
+            setShowModal(false);
         } catch (error) {
-            if (error.response) {
-                // 상태 코드 400일 때 오류 메시지 처리
-                console.error('Error deleting file:', error.response.data.message);
-                alert(error.response.data.message); // 사용자에게 서버 응답 메시지를 보여줌
-            } else {
-                console.error('Network or other error:', error);
-                alert('An unexpected error occurred.'); // 네트워크 오류나 기타 예외 처리
-            }
+            console.error('Error deleting file:', error);
         }
+    };
+
+    const handleCancel = () => {
+        setShowModal(false);
     };
 
     const handleFileClick = async (fileId) => {
         try {
             const response = await axios.get(
-                `https://f60f01f3-6e14-4580-8fed-fd8dc5a682e1.mock.pstmn.io/project/${fileId}`
+                `/project/${fileId}`
                 // {
                 //     headers: {
                 //         Authorization: `Bearer ${jwtToken}`, // JWT 토큰을 헤더에 추가
@@ -117,7 +112,6 @@ const Sidebar = ({ onSelectFile }) => {
             }
         } catch (error) {
             if (error.response) {
-                // 상태 코드 400 처리
                 if (error.response.status === 400) {
                     console.error('로그인 후 이용하실 수 있습니다:', error.response.data.message);
                 } else {
@@ -134,7 +128,8 @@ const Sidebar = ({ onSelectFile }) => {
             {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
             <div className="button-group">
                 <Button variant="outline-light" size="sm" onClick={() => setShowInput(true)} className="sidebar-button">
-                    +
+                    <VscNewFile style={{ marginRight: 10 }} />
+                    파일 생성하기
                 </Button>
             </div>
             {showInput && (
@@ -147,7 +142,7 @@ const Sidebar = ({ onSelectFile }) => {
                         className="file-input"
                     />
                     <Button variant="dark" size="sm" onClick={createFile}>
-                        Create
+                        확인
                     </Button>
                 </div>
             )}
@@ -155,16 +150,25 @@ const Sidebar = ({ onSelectFile }) => {
             {files.map((file) => (
                 <div key={file.fileId} className="sidebar-item">
                     <span onClick={() => handleFileClick(file.fileId)}>{file.fileName}</span>
-                    <Button
-                        variant="outline-light"
-                        size="sm"
-                        onClick={() => deleteFile(file.fileId)}
-                        className="sidebar-button"
-                    >
-                        -
-                    </Button>
+                    <button onClick={() => confirmDelete(file.fileId)} className="delete-button">
+                        <IoTrashOutline />
+                    </button>
                 </div>
             ))}
+            <Modal show={showModal} onHide={handleCancel}>
+                <Modal.Header closeButton>
+                    <Modal.Title>파일 삭제</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>파일을 삭제합니다. 계속하시겠습니까?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCancel}>
+                        취소
+                    </Button>
+                    <Button variant="danger" onClick={handleDelete}>
+                        확인
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 };

@@ -1,11 +1,13 @@
 .sidebar-items {
-    background-color: #1b2240;
+    background-color: #212121;
     width: 15vw;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
+    height: 100vh;
+    display: fixed;
+    /* flex-direction: column; */
+    padding-top: 50px;
     padding-left: 20px;
+    top: 0;
+    left: 0;
 }
 
 .sidebar-item {
@@ -18,22 +20,44 @@
 }
 
 .file-input {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: #282c34;
+    margin: 10px auto;
+    background-color: black;
     color: white;
     border-color: #313131;
-    width: 100%;
+    width: 95%;
+    padding: 8px;
 }
 
 .button-group {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.delete-button {
+    padding: 5px 10px;
+    margin: 5px 0;
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #666;
 }
 
 .sidebar-button {
-    margin-right: 10px;
+    margin: 0 auto;
+    width: 95%;
+    padding: 8px 0;
+    display: block;
 }
 
 .input-container {

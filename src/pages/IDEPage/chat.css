@@ -11,6 +11,6 @@
     width: calc(100% - 22px);
     margin-bottom: 5px;
 }
-#idAndMessageContainer{
+#idAndMessageContainer {
     display: flex;
 }
