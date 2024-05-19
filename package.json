@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
+    "@react-aria/ssr": "^3.9.3",
     "@stomp/stompjs": "^7.0.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/user-event": "^13.5.0",
@@ -11,6 +12,7 @@
     "bootstrap": "^5.3.3",
     "express": "^4.19.2",
     "history": "^5.3.0",
+    "http-proxy-middleware": "^3.0.0",
     "js-cookie": "^3.0.5",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.2",
@@ -22,6 +24,9 @@
     "web-vitals": "^2.1.4",
     "ws": "^8.17.0"
   },
+
+"proxy": "http://ec2-13-125-75-186.ap-northeast-2.compute.amazonaws.com:8080",
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
