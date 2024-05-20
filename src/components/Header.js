@@ -6,9 +6,9 @@ const Header = ({ onLogout }) => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        onLogout(); 
-    navigate('/login');
-};
+        onLogout();
+        navigate('/login');
+    };
 
     const onShowUserInfo = () => {
         navigate('/UserInfo');
@@ -16,6 +16,8 @@ const Header = ({ onLogout }) => {
 
     return (
         <header className="header">
+            <img className="icon" alt="icon" src="img/Als_web_ide_icon.png" style={{ marginRight: 'auto' }} />
+
             <nav className="header-nav">
                 <button onClick={onShowUserInfo}>내 정보</button>
                 <button onClick={handleLogout}>로그아웃</button>

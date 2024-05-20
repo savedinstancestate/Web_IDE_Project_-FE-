@@ -33,13 +33,18 @@
 .icon-box {
     width: 14vw; /* 뷰포트 너비에 따라 크기 조정 */
     height: 14vw; /* 너비와 동일하게 높이 설정 */
-    background-color: white;
+    background-color: transparent;
     border-radius: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #e1e1e1;
+    border: none;
     margin-bottom: 40px;
+}
+
+.icon {
+    width: 300px;
+    height: 300px;
 }
 
 .title {
@@ -61,8 +66,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #e1e1e1;
+    border: none;
     margin-bottom: 30px;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
 }
 
 .login-title {
