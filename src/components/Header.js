@@ -5,6 +5,11 @@ import './Header.css';
 const Header = ({ onLogout }) => {
     const navigate = useNavigate();
 
+    const handleLogout = () => {
+        onLogout(); 
+    navigate('/login');
+};
+
     const onShowUserInfo = () => {
         navigate('/UserInfo');
     };
@@ -13,7 +18,7 @@ const Header = ({ onLogout }) => {
         <header className="header">
             <nav className="header-nav">
                 <button onClick={onShowUserInfo}>내 정보</button>
-                <button onClick={onLogout}>로그아웃</button>
+                <button onClick={handleLogout}>로그아웃</button>
             </nav>
         </header>
     );

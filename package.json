@@ -5,6 +5,7 @@
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
     "@react-aria/ssr": "^3.9.3",
+    "@restart/ui": "^1.6.9",
     "@stomp/stompjs": "^7.0.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/user-event": "^13.5.0",
@@ -24,9 +25,7 @@
     "web-vitals": "^2.1.4",
     "ws": "^8.17.0"
   },
-
-"proxy": "http://ec2-13-125-75-186.ap-northeast-2.compute.amazonaws.com:8080",
-
+  "proxy": "http://ec2-13-125-75-186.ap-northeast-2.compute.amazonaws.com:8080",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

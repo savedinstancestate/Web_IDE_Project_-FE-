@@ -20,25 +20,26 @@ const Signup = () => {
     try {
       console.log("Checking userId availability:", values.userId);
       const response = await axios.post(
-        "/api/user/idcheck",
+        "/user/idcheck",
         { userId: values.userId },
         { headers: { "Content-Type": "application/json" } }
       );
       if (response.status === 200) {
         setUserIdStatus('available');
         alert('사용 가능한 아이디입니다.');
+        console.log("API Response:", response);
       } else {
         setUserIdStatus('unavailable');
       }
     } catch (error) {
-      console.error('아이디 사용 가능 여부를 확인하는 중 오류가 발생했습니다.: ', error);
+      console.error('아이디 사용 가능 여부를 확인하는 중 오류가 발생했습니다.: ', error.response.data.message);
       setUserIdStatus('unavailable');
     }
   };
 
   const checkNicknameAvailability = async () => {
     try {
-      console.log("Checking userId availability:", values.nickname);
+      console.log("Checking nickname availability:", values.nickname);
       const response = await axios.post(
         "/api/user/nicknamecheck",
         { nickname: values.nickname },
@@ -47,11 +48,12 @@ const Signup = () => {
       if (response.status === 200) {
         setNicknameStatus('available');
         alert('사용 가능한 닉네임입니다.');
+        console.log("API Response:", response);
       } else {
         setNicknameStatus('unavailable');
       }
     } catch (error) {
-      console.error('닉네임 사용 가능 여부를 확인하는 중 오류가 발생했습니다.: ', error);
+      console.error('닉네임 사용 가능 여부를 확인하는 중 오류가 발생했습니다.: ', error.response.data.message);
       setNicknameStatus('unavailable');
     }
   };
@@ -85,7 +87,7 @@ const Signup = () => {
         localStorage.setItem("accessToken", response.data.accessToken);
         Cookies.set('refreshToken', response.data.refreshToken);
         console.log("회원가입 성공, 닉네임: " + response.data.nickname);
-        navigate('/Home');
+        navigate('/project');
       } else {
         alert("오류가 발생했습니다. 다시 시도해 주세요.");
       }
