@@ -21,12 +21,9 @@
 npm-debug.log*
 og*
 ror.log*
-<<<<<<< HEAD
-=======
-
 src/components/ProtectedRoute.js
 	src/components/PublicRoute.js
 	src/components/useAuth.js
 age/Login.test.js
 	webpack.config.js
->>>>>>> 9ebe5df (깃이그노어)
+
