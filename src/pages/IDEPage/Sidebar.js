@@ -6,6 +6,13 @@ import withAuth from '../../components/withAuth';
 import { VscNewFile } from 'react-icons/vsc';
 import { IoTrashOutline } from 'react-icons/io5';
 
+export const API = axios.create({
+    baseURL: 'http://localhost:8080/',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+});
+
 const Sidebar = ({ onSelectFile }) => {
     const [files, setFiles] = useState([]);
     const [showInput, setShowInput] = useState(false);
@@ -19,15 +26,15 @@ const Sidebar = ({ onSelectFile }) => {
     const [alertMessage, setAlertMessage] = useState('');
 
     useEffect(() => {
-        axios
-            .get('/project', {
-                // headers: {
-                //     Authorization: `Bearer ${jwtToken}`,
-                // },
-            })
+        API.get('/project', {
+            headers: {
+                Authorization: `${localStorage.getItem('accessToken')}`,
+            },
+        })
             .then((response) => {
                 if (response.status === 200) {
-                    setFiles(response.data.data.filelist);
+                    console.log(response);
+                    setFiles(response.data.data.fileList);
                     setErrorMessage('');
                 }
             })
@@ -55,15 +62,22 @@ const Sidebar = ({ onSelectFile }) => {
         }
 
         // 파일 생성 API 호출
-        axios
-            .post(
-                '/project/file',
-                { fileName: nameInput }
-                // { headers: { Authorization: `Bearer ${jwtToken}` } }
-            )
+        API.post(
+            '/project/file',
+            {
+                fileName: nameInput,
+            },
+            {
+                headers: {
+                    Authorization: `${localStorage.getItem('accessToken')}`,
+                },
+            }
+
+            // { headers: { Authorization: `Bearer ${jwtToken}` } }
+        )
             .then((response) => {
                 if (response.status === 200) {
-                    console.log('New file created:', response.data);
+                    console.log('New file created:', response.data.filename);
                     setFiles([...files, response.data.data]);
                 }
             })
@@ -87,9 +101,8 @@ const Sidebar = ({ onSelectFile }) => {
     const handleDelete = async () => {
         if (!deleteCandidate) return;
         try {
-            const response = await axios.delete(`/project/file/${deleteCandidate}`, {
-                // headers: { Authorization: `Bearer ${jwtToken}` },
-                data: { fileId: deleteCandidate },
+            const response = await API.delete(`/project/file/${deleteCandidate}`, {
+                headers: { Authorization: `${localStorage.getItem('accessToken')}` },
             });
             if (response.status === 200) {
                 setFiles(files.filter((file) => file.fileId !== deleteCandidate));
@@ -106,14 +119,12 @@ const Sidebar = ({ onSelectFile }) => {
 
     const handleFileClick = async (fileId) => {
         try {
-            const response = await axios.get(
-                `/project/${fileId}`
-                // {
-                //     headers: {
-                //         Authorization: `Bearer ${jwtToken}`, // JWT 토큰을 헤더에 추가
-                //     },
-                // }
-            );
+            const response = await API.get(`/project/${fileId}`, {
+                headers: {
+                    Authorization: `${localStorage.getItem('accessToken')}`, // JWT 토큰을 헤더에 추가
+                },
+            });
+            console.log(response);
             if (response.status === 200) {
                 onSelectFile(response.data.data);
             } else {
