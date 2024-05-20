@@ -89,3 +89,6 @@ p {
     cursor: pointer;
     margin-top: 10px;
 }
+.error {
+    color: red;
+}
