@@ -1,4 +1,4 @@
-import axiosInstance from './axiosInstance';
+import API from "./axiosInstance";
 import Cookies from 'js-cookie';
 import { createBrowserHistory } from 'history';
 
@@ -9,9 +9,10 @@ const refreshAccessToken = async () => {
     const refreshToken = Cookies.get('refreshToken');
     if (!refreshToken) throw new Error('No refresh token available');
 
-    const response = await axiosInstance.post('/api/user/refreshToken', {}, {
+    const response = await API.post('/api/user/refreshToken', {}, {
       headers: {
-        Authorization: `Bearer ${refreshToken}`
+        Authorization: `Bearer ${refreshToken}`,
+        'Content-Type': 'application/json'
       }
     });
 
