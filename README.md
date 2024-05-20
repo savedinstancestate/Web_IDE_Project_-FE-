@@ -12,13 +12,11 @@
 | <div align="center"><img src="https://avatars.githubusercontent.com/u/96505736?v=4" width="50" height="50"/><br><b>김현빈</b></div> | <div align="center"><b>BE</b></div> | <div align="center"><b>팀장</b></div> | <div align="center"><b>[Github](https://github.com/khv9786)</b></div> | <div align="center"><img src="https://avatars.githubusercontent.com/u/108870712?v=4" width="50" height="50"/><br><b>강준수</b></div> | <div align="center"><b>BE</b></div> | <div align="center"><b>팀원</b></div> | <div align="center"><b>[Github](https://github.com/Kangjunesu)</b></div> | <div align="center"><img src="https://avatars.githubusercontent.com/u/104208670?v=4" width="50" height="50"/><br><b>이수지</b></div> | <div align="center"><b>FE</b></div> | <div align="center"><b>팀원</b></div> | <div align="center"><b>[Github](https://github.com/ssssuji)</b></div> |
 | <div align="center"><img src="https://avatars.githubusercontent.com/u/75283640?v=4" width="50" height="50"/><br><b>박진수</b></div> | <div align="center"><b>BE</b></div> | <div align="center"><b>팀원</b></div> | <div align="center"><b>[Github](https://github.com/qkrwlstn1)</b></div> | <div align="center"><img src="https://avatars.githubusercontent.com/u/53739820?v=4" width="50" height="50"/><br><b>남수연</b></div> | <div align="center"><b>BE</b></div> | <div align="center"><b>팀원</b></div> | <div align="center"><b>[Github](https://github.com/namtndus)</b></div> | <div align="center"><img src="https://avatars.githubusercontent.com/u/109202222?v=4" width="50" height="50"/><br><b>서다영</b></div> | <div align="center"><b>FE</b></div> | <div align="center"><b>팀원</b></div> | <div align="center"><b>[Github](https://github.com/savedinstancestate)</b></div> |
 
-## <img src="https://github.com/goorm-6th-Als/Web_IDE_Project_-FE-/assets/96505736/671f105a-3b1a-46a1-9728-9c7728a898bb" width="20" height="20"/> Backend repository
+##  <img src="https://github.com/goorm-6th-Als/Web_IDE_Project_-FE-/assets/108870712/d4d7505c-a001-42f3-95fc-bab88f86e728" width="30" heght="30"/> BackEnd 레포지토리
+<a href="https://github.com/goorm-6th-Als/Web_IDE_Project_BE"> BE 레포지토리 바로가기
 
 
-<a href="https://github.com/goorm-6th-Als/Web_IDE_Project_BE"> BE 레포 바로가기
-
-
-## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/17903fad-379a-4a6f-855b-ba990de1b77a" width="20" heght="20"/> Notion
+## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/17903fad-379a-4a6f-855b-ba990de1b77a" width="30" heght="30"/> Notion
 <a href="https://www.notion.so/goorm/b567120e6b7f41ea9389210c5d6572ea?pvs=4"> 팀 노션 바로가기
 
 ## 👀 깃 컨벤션
@@ -41,14 +39,14 @@
 
 
 
-## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/c475921f-b294-426d-bbb6-0e43a37486a2" width="20" heght="20"/> 기술 스택
+## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/c475921f-b294-426d-bbb6-0e43a37486a2" width="30" heght="30"/> 기술 스택
 ### BackEnd
-<img src="https://img.shields.io/badge/java-007396?style=flat-square&logo=java&logoColor=white"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/> <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=Spring&logoColor=white"/> <img src="https://img.shields.io/badge/springsecurity-6DB33F?style=flat-square&logo=springsecurity&logoColor=white"/> <img src="https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=Postman&logoColor=white"/> <img src="https://img.shields.io/badge/Apache Tomcat-F8DC75?style=flat-square&logo=apachetomcat&logoColor=black"/> <img src="https://img.shields.io/badge/amazon ec2-FF9900?style=flat-square&logo=amazonec2&logoColor=black"/> <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/> <img src="https://img.shields.io/badge/Jira-0052CC?style=flat-square&logo=jira&logoColor=white"/> <img src="https://img.shields.io/badge/IntelliJIDEA-000000?style=flat-square&logo=intellij-idea&logoColor=white"/> <img src="https://img.shields.io/badge/Gradle-02203A?style=flat-square&logo=Gradle&logoColor=white"/> <img src="https://img.shields.io/badge/springboot-6DB33F?style=flat-square&logo=springboot&logoColor=white"/> <img src="https://img.shields.io/badge/STOMP-6DB33F?style=flat-square&logo=stomp&logoColor=white"/> <img src="https://img.shields.io/badge/WebSocket-000000?style=flat-square&logo=websocket&logoColor=white"/>
+<img src="https://img.shields.io/badge/java-007396?style=flat-square&logo=java&logoColor=white"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/> <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=Spring&logoColor=white"/> <img src="https://img.shields.io/badge/springsecurity-6DB33F?style=flat-square&logo=springsecurity&logoColor=white"/> <img src="https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=Postman&logoColor=white"/> <img src="https://img.shields.io/badge/Apache Tomcat-F8DC75?style=flat-square&logo=apachetomcat&logoColor=black"/> <img src="https://img.shields.io/badge/amazon ec2-FF9900?style=flat-square&logo=amazonec2&logoColor=black"/> <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/> <img src="https://img.shields.io/badge/Jira-0052CC?style=flat-square&logo=jira&logoColor=white"/> <img src="https://img.shields.io/badge/IntelliJIDEA-000000?style=flat-square&logo=intellij-idea&logoColor=white"/> <img src="https://img.shields.io/badge/Gradle-02303A?style=flat-square&logo=Gradle&logoColor=white"/> <img src="https://img.shields.io/badge/springboot-6DB33F?style=flat-square&logo=springboot&logoColor=white"/> <img src="https://img.shields.io/badge/STOMP-6DB33F?style=flat-square&logo=stomp&logoColor=white"/> <img src="https://img.shields.io/badge/WebSocket-000000?style=flat-square&logo=websocket&logoColor=white"/>
 
 ### FrontEnd
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/react-20232a?style=flat-square&logo=react&logoColor=61DAFB"/> <img src="https://img.shields.io/badge/axios-5A29E4?style=flat-square&logo=axios&logoColor=white"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/> <img src="https://img.shields.io/badge/Bootstrapap-7952B3?style=flat-square&logo=bootstrap&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/> <img src="https://img.shields.io/badge/Jira-0052CC?style=flat-square&logo=jira&logoColor=white"/>  <img src="https://img.shields.io/badge/figma-F24E1E?style=flat-square&logo=figma&logoColor=white"/> 
 
-## 프로젝트 기능 << 프론트로 수정해주세요.
+## 프로젝트 기능
 
 
  <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/22795226-81ea-4ac8-81c3-c0295ccc73de" width="25" height="25"/> 회원가입 / 로그인
@@ -95,20 +93,20 @@
 
 
 
-## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/06a7b001-9eec-4d71-9dd4-55a3223b08b7" width="20" height="20"/> 적용 기술
+## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/06a7b001-9eec-4d71-9dd4-55a3223b08b7" width="30" height="30"/> 적용 기술
 
 
-## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/5e89f98a-3681-4fc3-98e4-541d9b9eb410" width="20" height="20"/> 트러블 슈팅
+## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/5e89f98a-3681-4fc3-98e4-541d9b9eb410" width="30" height="30"/> 트러블 슈팅
 
 
-## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/277a99af-bef6-486c-a461-5d773f6b9b88" width="20" height="20"/> 아키텍처
+## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/277a99af-bef6-486c-a461-5d773f6b9b88" width="30" height="30"/> 아키텍처
 ![image](https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/757f30f1-5bad-4ef4-bcc4-f3585f30854e)
 
 
-## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/692cd4fa-6005-492d-b001-3a58b120c408" width="20" height="20"/> 플로우 차트
+## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/692cd4fa-6005-492d-b001-3a58b120c408" width="30" height="30"/> 플로우 차트
 ![image](https://github.com/goorm-6th-Als/Web_IDE_Project_BE/assets/108870712/cd5b7c34-1bf4-40ab-92c2-a79774c7a6b0)
 
 
-## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/c97ef58e-83ea-4152-82a2-6f014331e63d" width="20" heght="20"/> ERD 
+## <img src="https://github.com/Kangjunesu/Web_IDE_Project_BE/assets/108870712/c97ef58e-83ea-4152-82a2-6f014331e63d" width="30" heght="30"/> ERD 
 ![image](https://github.com/goorm-6th-Als/Web_IDE_Project_BE/assets/108870712/29fefb34-56da-41ef-8b3b-0a816b754308)
 
