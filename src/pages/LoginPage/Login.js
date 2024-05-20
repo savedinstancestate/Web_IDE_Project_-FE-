@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import axios from 'axios';
 import useForm from '../../hooks/useForm';
 import './Login.css';
-import API from "../../api/axiosInstance";
 
 const Panel = () => {
     return (
@@ -83,7 +83,7 @@ const Login = () => {
         setLoading(true);
 
         try {
-            const response = await API.post('/api/user/login', formValues, {
+            const response = await axios.post('/api/user/login', formValues, {
                 headers: { 'Content-Type': 'application/json' },
             });
             
