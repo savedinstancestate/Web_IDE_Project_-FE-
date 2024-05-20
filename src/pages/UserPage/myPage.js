@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 //import withAuth from '../../components/withAuth';
 import './myPage.css';
+import API from "../../api/axiosInstance";
+import Cookies from 'js-cookie';
 
 const UserInfo = () => {
     const [nickname, setNickname] = useState(''); // 초기화 없이 빈 문자열로 시작
@@ -16,15 +17,18 @@ const UserInfo = () => {
     // 사용자 정보를 불러오는 함수
     useEffect(() => {
         const fetchUserInfo = async () => {
+            console.info("토큰 정보는 " + localStorage.getItem('accessToken'));
+            console.info("쿠키에 든 정보는 " + Cookies.get('refreshToken'));
             try {
                 // 토큰을 포함한 API 요청으로 사용자 정보 불러오기
-                const { data } = await axios.get('/api/user/mypage', {
+                const { data } = await API.get('/api/user/mypage', {
                     headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`, // 로컬 스토리지에서 토큰 가져오기
+                        Authorization: `${localStorage.getItem('accessToken')}`, // 로컬 스토리지에서 토큰 가져오기
                     },
                 });
-                setNickname(data.nickname); // 받아온 닉네임으로 상태 업데이트
-                setUserId(data.id); // 받아온 사용자 ID로 상태 업데이트
+                console.log(data);
+                setNickname(data.nickName); // 받아온 닉네임으로 상태 업데이트
+                setUserId(data.userId); // 받아온 사용자 ID로 상태 업데이트
             } catch (error) {
                 console.error('사용자 정보 불러오기 실패:', error);
             }
@@ -35,7 +39,7 @@ const UserInfo = () => {
     // 서버에서 닉네임 중복 확인
     const checkNicknameAvailability = async (nickname) => {
         try {
-            const response = await axios.post('/api/user/nicknamecheck', { nickname });
+            const response = await API.post('/api/user/nicknamecheck', { nickname });
             if (response.status === 200) {
                 return true;
             } else {
@@ -52,7 +56,7 @@ const UserInfo = () => {
             const isAvailable = await checkNicknameAvailability(newNickname);
             if (isAvailable) {
                 try {
-                    const response = await axios.put('/api/user/nicknamecheck', { newNickname });
+                    const response = await API.put('/api/user/nicknamecheck', { newNickname });
                     if (response.status === 200) {
                         setNickname(newNickname);
                         setNewNickname('');
@@ -74,7 +78,7 @@ const UserInfo = () => {
     // 서버에서 기존 비밀번호 확인
     const checkOldPassword = async (password) => {
         try {
-            const response = await axios.post('/api/user/passwordcheck', { password });
+            const response = await API.post('/api/user/passwordcheck', { password });
             if (response.status === 200) {
                 return true;
             } else {
@@ -95,7 +99,7 @@ const UserInfo = () => {
         const isOldPasswordCorrect = await checkOldPassword(oldPassword);
         if (isOldPasswordCorrect) {
             try {
-                const response = await axios.put('/api/user/passwordcheck', { newPassword });
+                const response = await API.put('/api/user/passwordcheck', { newPassword });
                 if (response.status === 200) {
                     setOldPassword('');
                     setNewPassword('');

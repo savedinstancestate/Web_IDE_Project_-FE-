@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import Cookies from 'js-cookie';
 import useForm from '../../hooks/useForm';
 import './Login.css';
+import API from "../../api/axiosInstance";
 
 const Panel = () => {
     return (
@@ -56,7 +56,7 @@ const LoginContainer = ({
             onChange={handleInputChange}
             placeholder="비밀번호를 입력하세요."
         />
-
+              
         {loginCheck && <label style={{ color: 'red' }}>아이디 혹은 비밀번호를 확인해 주세요.</label>}
 
         <div className="signup-div">
@@ -80,6 +80,32 @@ const Login = () => {
 
     const handleLogin = async (event) => {
         event.preventDefault();
+        setLoading(true);
+
+        try {
+            const response = await API.post('/api/user/login', formValues, {
+                headers: { 'Content-Type': 'application/json' },
+            });
+            
+            if (response.status === 200) {
+                setLoginCheck(false);
+                localStorage.setItem('accessToken', response.headers['authorization']);
+                Cookies.set('refreshToken', response.headers['x-refresh-token']);
+                console.log('Access Token from localStorage:', localStorage.getItem('accessToken'));
+console.log('Refresh Token from Cookies:', Cookies.get('refreshToken'));
+                console.log('로그인 성공, 아이디:' + formValues.userId);
+                navigate('/project');
+            } else {
+                setLoginCheck(true);
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            setLoginCheck(true);
+        } finally {
+            setLoading(false);
+        }
+    };
+
         console.log('Current form values:', formValues);
         setLoading(true);
 
