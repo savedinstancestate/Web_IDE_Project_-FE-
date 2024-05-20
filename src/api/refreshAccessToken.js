@@ -9,7 +9,7 @@ const refreshAccessToken = async () => {
     const refreshToken = Cookies.get('refreshToken');
     if (!refreshToken) throw new Error('No refresh token available');
 
-    const response = await axiosInstance.post('/refreshToken', {}, {
+    const response = await axiosInstance.post('/api/user/refreshToken', {}, {
       headers: {
         Authorization: `Bearer ${refreshToken}`
       }

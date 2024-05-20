@@ -21,9 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-src/components/ProtectedRoute.js
-	src/components/PublicRoute.js
-	src/components/useAuth.js
-	src/pages/LoginPage/Login.test.js
-	webpack.config.js
