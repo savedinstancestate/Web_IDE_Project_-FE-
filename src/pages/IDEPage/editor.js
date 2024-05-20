@@ -8,18 +8,28 @@ import { FaRegSave } from 'react-icons/fa';
 import { VscDebugStart } from 'react-icons/vsc';
 import withAuth from '../../components/withAuth';
 
-const IDEEditor = ({ value, onChange, selectedFile, readOnly, onExecute, inputValue, setInputValue }) => {
-    // const jwtToken = 'your-jwt-token-here';
+export const API = axios.create({
+    baseURL: 'http://localhost:8080/',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+});
 
+const IDEEditor = ({ value, onChange, selectedFile, readOnly, onExecute, inputValue, setInputValue }) => {
     const handleSave = async () => {
         if (!selectedFile) return; // 선택된 파일이 없다면 아무 작업도 수행하지 않음
         try {
-            const response = await axios.put(
+            const response = await API.put(
                 `/project/file`,
                 {
                     fileId: selectedFile.fileId,
-                    fileName: selectedFile.fileName,
+                    fileName: selectedFile.filename,
                     fileCode: value, // 현재 에디터에 적힌 코드
+                },
+                {
+                    headers: {
+                        Authorization: `${localStorage.getItem('accessToken')}`,
+                    },
                 }
                 // {
                 //     headers: {
@@ -47,20 +57,33 @@ const IDEEditor = ({ value, onChange, selectedFile, readOnly, onExecute, inputVa
     const handleExecute = async () => {
         if (!selectedFile) return;
         try {
-            const response = await axios.post(
-                '/project',
+            const response = await API.post(
+                '/project/execute',
                 {
                     fileId: selectedFile.fileId,
                     fileName: selectedFile.fileName,
                     fileCode: value,
                     input: inputValue,
+                },
+                {
+                    headers: {
+                        Authorization: `${localStorage.getItem('accessToken')}`,
+                    },
+                    // data: {
+                    //     fileId: selectedFile.fileId,
+                    //     fileName: selectedFile.fileName,
+                    //     fileCode: value,
+                    //     input: inputValue,
+                    // }
                 }
+
                 // {
                 //     headers: {
                 //         Authorization: `Bearer ${jwtToken}`, // 토큰을 포함한 Authorization 헤더 추가
                 //     },
                 // }
             );
+            console.log(response);
             if (response.status === 200) {
                 onExecute(response.data.data); // 성공시 데이터를 처리
             } else {
@@ -109,7 +132,7 @@ const IDEEditor = ({ value, onChange, selectedFile, readOnly, onExecute, inputVa
     return (
         <div className="editor-container">
             <div className="button-container">
-                <div className="file-name-display">{selectedFile ? selectedFile.fileName : 'No file selected'}</div>
+                <div className="file-name-display">{selectedFile ? selectedFile.filename : 'No file selected'}</div>
                 <div>
                     <Button variant="outline-success" size="sm" onClick={handleExecute} className="run-button">
                         <VscDebugStart />
