@@ -8,18 +8,13 @@ import { FaRegSave } from 'react-icons/fa';
 import { VscDebugStart } from 'react-icons/vsc';
 import withAuth from '../../components/withAuth';
 
-export const API = axios.create({
-    baseURL: 'http://localhost:8080/',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-});
+
 
 const IDEEditor = ({ value, onChange, selectedFile, readOnly, onExecute, inputValue, setInputValue }) => {
     const handleSave = async () => {
         if (!selectedFile) return; // 선택된 파일이 없다면 아무 작업도 수행하지 않음
         try {
-            const response = await API.put(
+            const response = await axios.put(
                 `/project/file`,
                 {
                     fileId: selectedFile.fileId,
@@ -57,7 +52,7 @@ const IDEEditor = ({ value, onChange, selectedFile, readOnly, onExecute, inputVa
     const handleExecute = async () => {
         if (!selectedFile) return;
         try {
-            const response = await API.post(
+            const response = await axios.post(
                 '/project/execute',
                 {
                     fileId: selectedFile.fileId,
