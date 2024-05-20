@@ -92,7 +92,7 @@ const Login = () => {
                 localStorage.setItem('accessToken', response.headers['authorization']);
                 Cookies.set('refreshToken', response.headers['x-refresh-token']);
                 console.log('Access Token from localStorage:', localStorage.getItem('accessToken'));
-console.log('Refresh Token from Cookies:', Cookies.get('refreshToken'));
+                console.log('Refresh Token from Cookies:', Cookies.get('refreshToken'));
                 console.log('로그인 성공, 아이디:' + formValues.userId);
                 navigate('/project');
             } else {
@@ -100,31 +100,6 @@ console.log('Refresh Token from Cookies:', Cookies.get('refreshToken'));
             }
         } catch (error) {
             console.error('Login error:', error);
-            setLoginCheck(true);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-        console.log('Current form values:', formValues);
-        setLoading(true);
-
-        try {
-            const response = await axios.post('/api/user/login', formValues, {
-                headers: { 'Content-Type': 'application/json' },
-            });
-
-            if (response.status === 200) {
-                setLoginCheck(false);
-                localStorage.setItem('accessToken', response.data.accessToken);
-                Cookies.set('refreshToken', response.data.refreshToken);
-                console.log('로그인 성공, 아이디:' + formValues.userId);
-                navigate('/project');
-            } else {
-                setLoginCheck(true);
-            }
-        } catch (error) {
-            console.error('Login error:', error.response.data.message);
             setLoginCheck(true);
         } finally {
             setLoading(false);
