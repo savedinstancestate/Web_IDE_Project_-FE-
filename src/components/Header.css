@@ -12,7 +12,7 @@
     align-items: center; /* 버튼을 수직 중앙에 위치 */
 }
 
-.icon {
+.header-icon {
     height: 50px;
     width: 50px; /* 로고의 크기 설정 */
     margin-right: auto; /* 로고를 왼쪽에 정렬 */

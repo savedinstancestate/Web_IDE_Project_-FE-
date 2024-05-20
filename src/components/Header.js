@@ -16,7 +16,7 @@ const Header = ({ onLogout }) => {
 
     return (
         <header className="header">
-            <img className="icon" alt="icon" src="img/Als_web_ide_icon.png" style={{ marginRight: 'auto' }} />
+            <img className="header-icon" alt="icon" src="img/Als_web_ide_icon.png" style={{ marginRight: 'auto' }} />
 
             <nav className="header-nav">
                 <button onClick={onShowUserInfo}>내 정보</button>

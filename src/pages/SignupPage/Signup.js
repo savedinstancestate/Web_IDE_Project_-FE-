@@ -102,7 +102,7 @@ const Signup = () => {
         <div className="signup-container">
             <form className="signup-form" onSubmit={handleSignup}>
                 <div className="logo">
-                    <img className="icon" alt="icon" src="img/Als_web_ide_icon.png" />
+                    <img className="signup-icon" alt="icon" src="img/Als_web_ide_icon.png" />
                 </div>
                 <h1>회원가입</h1>
                 <p>Web IDE에 오신 것을 환영합니다!</p>
