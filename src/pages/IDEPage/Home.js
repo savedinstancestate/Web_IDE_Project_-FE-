@@ -6,6 +6,7 @@ import './Home.css';
 import './Sidebar.css';
 import Header from '../../components/Header';
 import ChatModal from './ChatModal';
+import withAuth from '../../components/withAuth';
 
 const Home = () => {
     const [editorContent, setEditorContent] = useState('');
@@ -16,7 +17,7 @@ const Home = () => {
 
     const handleSelectFile = (file) => {
         setSelectedFile(file);
-        setEditorContent(file.fileCode);
+        setEditorContent(file.code);
         setInputValue('');
         setResult('');
         setReadOnly(false);
@@ -49,4 +50,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default withAuth(Home);
