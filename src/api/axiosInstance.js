@@ -7,13 +7,13 @@ import refreshAccessToken from './refreshAccessToken';
 const history = createBrowserHistory();
 
 // axios 인스턴스 생성
-const axiosInstance = axios.create({
-  baseURL: 'http://localhose:8080', 
+const API = axios.create({
+  baseURL: 'http://localhost:8080', 
   headers: { 'Content-Type': 'application/json' },
 });
 
 // 요청 인터셉터: 액세스 토큰을 기본 헤더에 설정
-axiosInstance.interceptors.request.use(
+API.interceptors.request.use(
   (config) => {
     const accessToken = localStorage.getItem('accessToken');
     if (accessToken) {
@@ -24,9 +24,9 @@ axiosInstance.interceptors.request.use(
   // Promise: js에서 비동기 작업을 처리하기 위한 객체
   (error) => Promise.reject(error) 
 );
-
+/*
 // 응답 인터셉터: 에러 처리, 인증 오류 발생 시 토큰 갱신 및 재요청
-axiosInstance.interceptors.response.use(
+API.interceptors.response.use(
   (response) => response, // 응답이 성공적일 때 그대로 반환
 
   async (error) => {
@@ -38,7 +38,7 @@ axiosInstance.interceptors.response.use(
       try {
         const newAccessToken = await refreshAccessToken();
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-        return axiosInstance(originalRequest); // 기존 요청 다시 시도
+        return API(originalRequest); // 기존 요청 다시 시도
       } catch (refreshError) {
         return Promise.reject(refreshError);
       }
@@ -53,5 +53,5 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-export default axiosInstance;
+*/
+export default API;
