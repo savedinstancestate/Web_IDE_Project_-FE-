@@ -9,7 +9,7 @@ const Panel = () => {
     return (
         <div className="panel">
             <div className="icon-box">
-                <div className="icon">Icon</div>
+                <img className="icon" alt="icon" src="img/Als_web_ide_icon.png" />
             </div>
             <div className="title">Web IDE</div>
             <p className="description">
@@ -32,7 +32,7 @@ const LoginContainer = ({
 }) => (
     <form className="login-form" onSubmit={handleLogin}>
         <div className="logo-box">
-            <div className="logo"></div>
+            <img className="logo" alt="logo" src="img/Als_web_ide_icon.png" />
         </div>
 
         <div className="login-title">로그인</div>
@@ -56,8 +56,8 @@ const LoginContainer = ({
             onChange={handleInputChange}
             placeholder="비밀번호를 입력하세요."
         />
-
-        {loginCheck && <label style={{ color: 'red' }}>아이디 혹은 비밀번호가 틀렸습니다.</label>}
+              
+        {loginCheck && <label style={{ color: 'red' }}>아이디 혹은 비밀번호를 확인해 주세요.</label>}
 
         <div className="signup-div">
             계정이 없으신가요?
@@ -100,6 +100,31 @@ console.log('Refresh Token from Cookies:', Cookies.get('refreshToken'));
             }
         } catch (error) {
             console.error('Login error:', error);
+            setLoginCheck(true);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+        console.log('Current form values:', formValues);
+        setLoading(true);
+
+        try {
+            const response = await axios.post('/api/user/login', formValues, {
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            if (response.status === 200) {
+                setLoginCheck(false);
+                localStorage.setItem('accessToken', response.data.accessToken);
+                Cookies.set('refreshToken', response.data.refreshToken);
+                console.log('로그인 성공, 아이디:' + formValues.userId);
+                navigate('/project');
+            } else {
+                setLoginCheck(true);
+            }
+        } catch (error) {
+            console.error('Login error:', error.response.data.message);
             setLoginCheck(true);
         } finally {
             setLoading(false);
