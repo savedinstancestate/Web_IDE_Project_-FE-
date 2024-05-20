@@ -9,24 +9,19 @@
 /coverage
 
 # production
-/build
-
 # misc
 .DS_Store
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-
+nohup.out
 npm-debug.log*
 og*
 ror.log*
-<<<<<<< HEAD
-=======
-
 src/components/ProtectedRoute.js
 	src/components/PublicRoute.js
 	src/components/useAuth.js
 age/Login.test.js
 	webpack.config.js
->>>>>>> 9ebe5df (깃이그노어)
+

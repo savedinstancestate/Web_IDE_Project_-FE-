@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import API from '../../api/axiosInstance';
+import axios from 'axios';
 import Cookies from 'js-cookie';
 import useForm from '../../hooks/useForm';
 import './Signup.css';
@@ -19,7 +19,7 @@ const Signup = () => {
     const checkUserIdAvailability = async () => {
         try {
             console.log('Checking userId availability:', values.userId);
-            const response = await API.post(
+            const response = await axios.post(
                 '/api/user/idcheck',
                 { userId: values.userId },
                 { headers: { 'Content-Type': 'application/json' } }
@@ -39,7 +39,7 @@ const Signup = () => {
     const checkNicknameAvailability = async () => {
         try {
             console.log('Checking userId availability:', values.nickname);
-            const response = await API.post(
+            const response = await axios.post(
                 '/api/user/nicknamecheck',
                 { nickname: values.nickname },
                 { headers: { 'Content-Type': 'application/json' } }
@@ -74,7 +74,7 @@ const Signup = () => {
         }
 
         try {
-            const response = await API.post(
+            const response = await axios.post(
                 '/api/user/signup',
                 { userId, nickname, password },
                 {

@@ -6,12 +6,7 @@ import withAuth from '../../components/withAuth';
 import { VscNewFile } from 'react-icons/vsc';
 import { IoTrashOutline } from 'react-icons/io5';
 
-export const API = axios.create({
-    baseURL: 'http://localhost:8080/',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-});
+
 
 const Sidebar = ({ onSelectFile }) => {
     const [files, setFiles] = useState([]);
@@ -26,7 +21,7 @@ const Sidebar = ({ onSelectFile }) => {
     const [alertMessage, setAlertMessage] = useState('');
 
     useEffect(() => {
-        API.get('/project', {
+        axios.get('/project', {
             headers: {
                 Authorization: `${localStorage.getItem('accessToken')}`,
             },
@@ -62,7 +57,7 @@ const Sidebar = ({ onSelectFile }) => {
         }
 
         // 파일 생성 API 호출
-        API.post(
+        axios.post(
             '/project/file',
             {
                 fileName: nameInput,
@@ -101,7 +96,7 @@ const Sidebar = ({ onSelectFile }) => {
     const handleDelete = async () => {
         if (!deleteCandidate) return;
         try {
-            const response = await API.delete(`/project/file/${deleteCandidate}`, {
+            const response = await axios.delete(`/project/file/${deleteCandidate}`, {
                 headers: { Authorization: `${localStorage.getItem('accessToken')}` },
             });
             if (response.status === 200) {
@@ -119,7 +114,7 @@ const Sidebar = ({ onSelectFile }) => {
 
     const handleFileClick = async (fileId) => {
         try {
-            const response = await API.get(`/project/${fileId}`, {
+            const response = await axios.get(`/project/${fileId}`, {
                 headers: {
                     Authorization: `${localStorage.getItem('accessToken')}`, // JWT 토큰을 헤더에 추가
                 },
