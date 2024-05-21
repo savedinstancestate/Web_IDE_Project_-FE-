@@ -39,7 +39,11 @@ const UserInfo = () => {
     // 서버에서 닉네임 중복 확인
     const checkNicknameAvailability = async (nickname) => {
         try {
-            const response = await axios.post('/api/user/nicknamecheck', { nickname });
+            const response = await axios.post('/api/user/nicknamecheck', {userNickName: nickname },{
+                headers: {
+                    Authorization: `${localStorage.getItem('accessToken')}`, // 로컬 스토리지에서 토큰 가져오기
+                },
+            });
             if (response.status === 200) {
                 return true;
             } else {
@@ -56,7 +60,11 @@ const UserInfo = () => {
             const isAvailable = await checkNicknameAvailability(newNickname);
             if (isAvailable) {
                 try {
-                    const response = await axios.put('/api/user/nicknamecheck', { newNickname });
+                    const response = await axios.put('/api/user/nicknamecheck', {userNickName :newNickname },{
+                        headers: {
+                            Authorization: `${localStorage.getItem('accessToken')}`, // 로컬 스토리지에서 토큰 가져오기
+                        },
+                    });
                     if (response.status === 200) {
                         setNickname(newNickname);
                         setNewNickname('');
@@ -78,7 +86,11 @@ const UserInfo = () => {
     // 서버에서 기존 비밀번호 확인
     const checkOldPassword = async (password) => {
         try {
-            const response = await axios.post('/api/user/passwordcheck', { password });
+            const response = await axios.post('/api/user/passwordcheck', {userPassword: password },{
+                headers: {
+                        Authorization: `${localStorage.getItem('accessToken')}`, // 로컬 스토리지에서 토큰 가져오기
+                },
+            });
             if (response.status === 200) {
                 return true;
             } else {
@@ -99,7 +111,11 @@ const UserInfo = () => {
         const isOldPasswordCorrect = await checkOldPassword(oldPassword);
         if (isOldPasswordCorrect) {
             try {
-                const response = await axios.put('/api/user/passwordcheck', { newPassword });
+                const response = await axios.put('/api/user/passwordcheck', { userPassword :newPassword },{
+                    headers: {
+                        Authorization: `${localStorage.getItem('accessToken')}`, // 로컬 스토리지에서 토큰 가져오기
+                    },
+                });
                 if (response.status === 200) {
                     setOldPassword('');
                     setNewPassword('');
