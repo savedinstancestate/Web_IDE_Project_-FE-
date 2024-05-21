@@ -6,8 +6,6 @@ import withAuth from '../../components/withAuth';
 import { VscNewFile } from 'react-icons/vsc';
 import { IoTrashOutline } from 'react-icons/io5';
 
-
-
 const Sidebar = ({ onSelectFile }) => {
     const [files, setFiles] = useState([]);
     const [showInput, setShowInput] = useState(false);
@@ -21,11 +19,12 @@ const Sidebar = ({ onSelectFile }) => {
     const [alertMessage, setAlertMessage] = useState('');
 
     useEffect(() => {
-        axios.get('/project', {
-            headers: {
-                Authorization: `${localStorage.getItem('accessToken')}`,
-            },
-        })
+        axios
+            .get('/project', {
+                headers: {
+                    Authorization: `${localStorage.getItem('accessToken')}`,
+                },
+            })
             .then((response) => {
                 if (response.status === 200) {
                     console.log(response);
@@ -57,23 +56,28 @@ const Sidebar = ({ onSelectFile }) => {
         }
 
         // 파일 생성 API 호출
-        axios.post(
-            '/project/file',
-            {
-                fileName: nameInput,
-            },
-            {
-                headers: {
-                    Authorization: `${localStorage.getItem('accessToken')}`,
+        axios
+            .post(
+                '/project/file',
+                {
+                    fileName: nameInput,
                 },
-            }
+                {
+                    headers: {
+                        Authorization: `${localStorage.getItem('accessToken')}`,
+                    },
+                }
 
-            // { headers: { Authorization: `Bearer ${jwtToken}` } }
-        )
+                // { headers: { Authorization: `Bearer ${jwtToken}` } }
+            )
             .then((response) => {
                 if (response.status === 200) {
-                    console.log('New file created:', response.data.filename);
-                    setFiles([...files, response.data.data]);
+                    console.log('New file created:', response.data);
+                    const newFile = {
+                        ...response.data.data,
+                        fileName: response.data.data.fileName || response.data.data.filename,
+                    };
+                    setFiles([...files, newFile]);
                 }
             })
             .catch((error) => {
