@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Editor from '@monaco-editor/react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import './editor.css';
@@ -8,9 +8,9 @@ import { FaRegSave } from 'react-icons/fa';
 import { VscDebugStart } from 'react-icons/vsc';
 import withAuth from '../../components/withAuth';
 
-
-
 const IDEEditor = ({ value, onChange, selectedFile, readOnly, onExecute, inputValue, setInputValue }) => {
+    const [saveSuccess, setSaveSuccess] = useState(false);
+
     const handleSave = async () => {
         if (!selectedFile) return; // 선택된 파일이 없다면 아무 작업도 수행하지 않음
         try {
@@ -35,6 +35,8 @@ const IDEEditor = ({ value, onChange, selectedFile, readOnly, onExecute, inputVa
             if (response.status === 200) {
                 console.log('File saved successfully:', response.data);
                 // alert('파일 저장 성공'); // 사용자에게 성공 메시지 표시
+                setSaveSuccess(true);
+                setTimeout(() => setSaveSuccess(false), 3000);
             } else {
                 console.error('Unexpected status code:', response.status);
             }
@@ -127,17 +129,19 @@ const IDEEditor = ({ value, onChange, selectedFile, readOnly, onExecute, inputVa
     return (
         <div className="editor-container">
             <div className="button-container">
-                <div className="file-name-display">{selectedFile ? selectedFile.filename : 'No file selected'}</div>
-                <div>
-                    <Button variant="outline-success" size="sm" onClick={handleExecute} className="run-button">
-                        <VscDebugStart />
-                        Run
-                    </Button>
-                    <Button variant="outline-warning" size="sm" onClick={handleSave}>
-                        <FaRegSave /> Save
-                    </Button>
-                </div>
+                <div className="file-name-display">{selectedFile ? selectedFile.fileName : 'No file selected'}</div>
+                <Button variant="outline-success" size="sm" onClick={handleExecute} className="run-button">
+                    <VscDebugStart /> Run
+                </Button>
+                <Button variant="outline-warning" size="sm" onClick={handleSave}>
+                    <FaRegSave /> Save
+                </Button>
             </div>
+            {saveSuccess && (
+                <div style={{ position: 'absolute', top: '20px', right: '20px', zIndex: 1050 }}>
+                    <Alert variant="info"> {selectedFile.fileName} 파일이 성공적으로 저장되었습니다.</Alert>
+                </div>
+            )}
             <Editor
                 height="calc(100% - 80px)"
                 defaultLanguage="java"
