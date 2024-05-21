@@ -41,7 +41,7 @@ const Signup = () => {
             console.log('Checking userId availability:', values.nickname);
             const response = await axios.post(
                 '/api/user/nicknamecheck',
-                { nickname: values.nickname },
+                { userNickName: values.nickname },
                 { headers: { 'Content-Type': 'application/json' } }
             );
             if (response.status === 200) {
