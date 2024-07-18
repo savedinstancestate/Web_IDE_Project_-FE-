@@ -1,0 +1,67 @@
+/* Editor.css */
+
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 10px;
+    background-color: black;
+    overflow: hidden; /* 추가: overflow 설정 */
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* 요소들을 양 끝으로 분산 배치 */
+    align-items: center; /* 버티컬 중심 정렬 */
+    margin-bottom: 10px;
+}
+
+.run-button {
+    margin-right: 10px;
+}
+
+.input-form {
+    margin-top: 10px;
+}
+
+.input-field {
+    background-color: #282c34;
+    color: white;
+    border-color: #313131;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.file-name-display {
+    color: white;
+    font-size: 16px;
+    flex-grow: 1; /* 파일 이름이 공간을 충분히 차지하도록 함 */
+}
+
+@media (max-width: 1200px) {
+    .input-field {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .input-field {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .button-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .run-button {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .input-field {
+        width: 100%;
+    }
+}

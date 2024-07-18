@@ -1,0 +1,172 @@
+.login-container {
+    display: flex;
+    margin: 0vw;
+    width: 100vw; /* 전체 뷰포트 너비 사용 */
+    height: 100vh; /* 전체 뷰포트 높이 사용 */
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
+    overflow-y: hidden; /* 가로 스크롤 방지 */
+}
+
+.panel {
+    background-color: #212121;
+    color: white;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25vh; /* 동적 패딩 설정 */
+}
+
+.login-form {
+    background-color: white;
+    color: black;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5vh; /* 동적 패딩 설정 */
+}
+
+.icon-box {
+    width: 14vw; /* 뷰포트 너비에 따라 크기 조정 */
+    height: 14vw; /* 너비와 동일하게 높이 설정 */
+    background-color: transparent;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    margin-bottom: 40px;
+}
+
+.icon {
+    width: 300px;
+    height: 300px;
+}
+
+.title {
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+.description {
+    text-align: center;
+    font-size: 1.2vw;
+    color: #dddddd;
+}
+
+.logo-box {
+    width: 6vw; /* 뷰포트 너비에 따라 크기 조정 */
+    height: 6vw; /* 너비와 동일하게 높이 설정 */
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+}
+
+.login-title {
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.login-input-field {
+    width: 80%;
+    height: 8%;
+    padding: 1vw;
+    margin-top: 3vh;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 1vw;
+}
+
+input:focus {
+    box-shadow: 0 0 4px #b0e2ff; /* 클릭 시 연한 하늘색 그림자 */
+}
+
+.login-button {
+    width: 80%;
+    height: 8%;
+    background-color: black;
+    color: white;
+    padding: 1vw;
+    margin-top: 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1vw;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.signup-div {
+    width: 80%;
+    color: #929292;
+    font-size: 1vw;
+    margin-top: 10px;
+}
+
+.signup-link {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.signup-link a {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: no;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 1300px) {
+    .title,
+    .description,
+    .login-title,
+    .input-field,
+    .login-button,
+    .signup-link {
+        font-size: 1.2vw;
+    }
+
+    .input-field,
+    .login-button {
+        padding: 2vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .icon,
+    .logo {
+        font-size: 10vw;
+    }
+
+    .title,
+    .description,
+    .login-title,
+    .input-field,
+    .login-button,
+    .signup-link {
+        font-size: 8vw;
+    }
+
+    .input-field,
+    .login-button {
+        padding: 8vw;
+    }
+}

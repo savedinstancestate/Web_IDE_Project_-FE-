@@ -1,0 +1,144 @@
+
+> web-ide-fe@0.1.0 start
+> react-scripts start
+
+(node:53226) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:53226) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled with warnings.
+
+Failed to parse source map from '/root/.ssh/Web_IDE_Project_-FE-/node_modules/@react-aria/ssr/dist/SSRProvider.mjs.map' file: Error: ENOENT: no such file or directory, open '/root/.ssh/Web_IDE_Project_-FE-/node_modules/@react-aria/ssr/dist/SSRProvider.mjs.map'
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in ./node_modules/@react-aria/ssr/dist/SSRProvider.mjs
+Module Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+Failed to parse source map from '/root/.ssh/Web_IDE_Project_-FE-/node_modules/@react-aria/ssr/dist/SSRProvider.mjs.map' file: Error: ENOENT: no such file or directory, open '/root/.ssh/Web_IDE_Project_-FE-/node_modules/@react-aria/ssr/dist/SSRProvider.mjs.map'
+
+webpack compiled with 1 warning
+
+> web-ide-fe@0.1.0 start
+> react-scripts start
+
+(node:2529) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:2529) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled with warnings.
+
+Failed to parse source map from '/root/.ssh/Web_IDE_Project_-FE-/node_modules/@react-aria/ssr/dist/SSRProvider.mjs.map' file: Error: ENOENT: no such file or directory, open '/root/.ssh/Web_IDE_Project_-FE-/node_modules/@react-aria/ssr/dist/SSRProvider.mjs.map'
+
+[eslint] 
+src/App.js
+  Line 8:8:  'axios' is defined but never used  no-unused-vars
+
+src/api/axiosInstance.js
+  Line 3:8:  'Cookies' is defined but never used             no-unused-vars
+  Line 5:8:  'refreshAccessToken' is defined but never used  no-unused-vars
+  Line 7:7:  'history' is assigned a value but never used    no-unused-vars
+
+src/components/useAuth.js
+  Line 1:8:  'React' is defined but never used  no-unused-vars
+
+src/pages/IDEPage/chat.js
+  Line 22:8:  React Hook useEffect has missing dependencies: 'connectWebSocket' and 'stompClient'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/pages/IDEPage/editor.js
+  Line 1:17:  'useState' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in ./node_modules/@react-aria/ssr/dist/SSRProvider.mjs
+Module Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+Failed to parse source map from '/root/.ssh/Web_IDE_Project_-FE-/node_modules/@react-aria/ssr/dist/SSRProvider.mjs.map' file: Error: ENOENT: no such file or directory, open '/root/.ssh/Web_IDE_Project_-FE-/node_modules/@react-aria/ssr/dist/SSRProvider.mjs.map'
+
+WARNING in [eslint] 
+src/App.js
+  Line 8:8:  'axios' is defined but never used  no-unused-vars
+
+src/api/axiosInstance.js
+  Line 3:8:  'Cookies' is defined but never used             no-unused-vars
+  Line 5:8:  'refreshAccessToken' is defined but never used  no-unused-vars
+  Line 7:7:  'history' is assigned a value but never used    no-unused-vars
+
+src/components/useAuth.js
+  Line 1:8:  'React' is defined but never used  no-unused-vars
+
+src/pages/IDEPage/chat.js
+  Line 22:8:  React Hook useEffect has missing dependencies: 'connectWebSocket' and 'stompClient'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/pages/IDEPage/editor.js
+  Line 1:17:  'useState' is defined but never used  no-unused-vars
+
+webpack compiled with 2 warnings
+Proxy error: Could not proxy request /highLightTitle.png from ec2-43-200-171-156.ap-northeast-2.compute.amazonaws.com:3000 to http://ec2-13-125-75-186.ap-northeast-2.compute.amazonaws.com:8080.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (ETIMEDOUT).
+
+Proxy error: Could not proxy request /highLightTitle.png from ec2-43-200-171-156.ap-northeast-2.compute.amazonaws.com:3000 to http://ec2-13-125-75-186.ap-northeast-2.compute.amazonaws.com:8080.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (ETIMEDOUT).
+
+Proxy error: Could not proxy request /highLightTitle.png from ec2-43-200-171-156.ap-northeast-2.compute.amazonaws.com:3000 to http://ec2-13-125-75-186.ap-northeast-2.compute.amazonaws.com:8080.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (ETIMEDOUT).
+
+
+> web-ide-fe@0.1.0 start
+> react-scripts start
+
+(node:2450) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:2450) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled with warnings.
+
+Failed to parse source map from '/root/.ssh/Web_IDE_Project_-FE-/node_modules/@react-aria/ssr/dist/SSRProvider.mjs.map' file: Error: ENOENT: no such file or directory, open '/root/.ssh/Web_IDE_Project_-FE-/node_modules/@react-aria/ssr/dist/SSRProvider.mjs.map'
+
+[eslint] 
+src/App.js
+  Line 8:8:  'axios' is defined but never used  no-unused-vars
+
+src/api/axiosInstance.js
+  Line 3:8:  'Cookies' is defined but never used             no-unused-vars
+  Line 5:8:  'refreshAccessToken' is defined but never used  no-unused-vars
+  Line 7:7:  'history' is assigned a value but never used    no-unused-vars
+
+src/components/useAuth.js
+  Line 1:8:  'React' is defined but never used  no-unused-vars
+
+src/pages/IDEPage/chat.js
+  Line 22:8:  React Hook useEffect has missing dependencies: 'connectWebSocket' and 'stompClient'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/pages/IDEPage/editor.js
+  Line 1:17:  'useState' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in ./node_modules/@react-aria/ssr/dist/SSRProvider.mjs
+Module Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+Failed to parse source map from '/root/.ssh/Web_IDE_Project_-FE-/node_modules/@react-aria/ssr/dist/SSRProvider.mjs.map' file: Error: ENOENT: no such file or directory, open '/root/.ssh/Web_IDE_Project_-FE-/node_modules/@react-aria/ssr/dist/SSRProvider.mjs.map'
+
+WARNING in [eslint] 
+src/App.js
+  Line 8:8:  'axios' is defined but never used  no-unused-vars
+
+src/api/axiosInstance.js
+  Line 3:8:  'Cookies' is defined but never used             no-unused-vars
+  Line 5:8:  'refreshAccessToken' is defined but never used  no-unused-vars
+  Line 7:7:  'history' is assigned a value but never used    no-unused-vars
+
+src/components/useAuth.js
+  Line 1:8:  'React' is defined but never used  no-unused-vars
+
+src/pages/IDEPage/chat.js
+  Line 22:8:  React Hook useEffect has missing dependencies: 'connectWebSocket' and 'stompClient'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src/pages/IDEPage/editor.js
+  Line 1:17:  'useState' is defined but never used  no-unused-vars
+
+webpack compiled with 2 warnings

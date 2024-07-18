@@ -1,0 +1,16 @@
+.chat {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 10px;
+    width: calc(100% - 22px);
+    height: 400px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+#messageInput {
+    width: calc(100% - 22px);
+    margin-bottom: 5px;
+}
+#idAndMessageContainer {
+    display: flex;
+}

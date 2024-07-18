@@ -1,0 +1,89 @@
+.sidebar-items {
+    background-color: #212121;
+    width: 15vw;
+    height: 100vh;
+    display: fixed;
+    /* flex-direction: column; */
+    padding-top: 50px;
+    padding-left: 20px;
+    top: 0;
+    left: 0;
+}
+
+.sidebar-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.file-input {
+    margin: 10px auto;
+    background-color: black;
+    color: white;
+    border-color: #313131;
+    width: 95%;
+    padding: 8px;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.delete-button {
+    padding: 5px 10px;
+    margin: 5px 0;
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #666;
+}
+
+.sidebar-button {
+    margin: 0 auto;
+    width: 95%;
+    padding: 8px 0;
+    display: block;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.delete-button {
+    margin-left: 10px;
+}
+
+@media (max-width: 1200px) {
+    .sidebar-items {
+        width: 20vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar-items {
+        width: 30vw;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar-items {
+        width: 40vw;
+    }
+}

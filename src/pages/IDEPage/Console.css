@@ -1,0 +1,10 @@
+.console {
+    background-color: #212121;
+    color: white;
+    height: 160px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    overflow-y: auto; /* 세로 스크롤을 표시하는 설정 */
+}

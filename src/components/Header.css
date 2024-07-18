@@ -1,0 +1,38 @@
+.header {
+    width: 100%; /* 전체 너비 */
+    position: fixed; /* 고정 위치 */
+    top: 0; /* 상단에 위치 */
+    z-index: 1000; /* 다른 요소 위에 위치 */
+    background-color: transparent; /* 배경색을 투명하게 설정 */
+    color: white; /* 글자 색 */
+    height: 50px; /* 헤더 높이 */
+    display: flex;
+    justify-content: flex-end; /* 버튼을 오른쪽에 정렬 */
+    padding: 0 20px; /* 좌우 패딩 */
+    align-items: center; /* 버튼을 수직 중앙에 위치 */
+}
+
+.header-icon {
+    height: 50px;
+    width: 50px; /* 로고의 크기 설정 */
+    margin-right: auto; /* 로고를 왼쪽에 정렬 */
+}
+
+.header-nav button {
+    background: none; /* 버튼 배경 없음 */
+    border: none; /* 흰색 테두리 */
+    color: white; /* 글자 색 */
+    font-size: 12px; /* 글자 크기 */
+    cursor: pointer; /* 커서 포인터 */
+    padding: 10px 15px; /* 버튼 내부 패딩 */
+    margin-left: 10px; /* 버튼 간 간격 */
+    text-decoration: underline;
+}
+
+.header-nav button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* 버튼 호버 시 반투명 배경 */
+}
+
+.editor-page .header {
+    background-color: #212121;
+}
