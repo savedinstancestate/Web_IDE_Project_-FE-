@@ -45,7 +45,7 @@
   <br>
 
 ## 🛠 시스템 아키텍처
-<img width="500" alt="스크린샷 2024-10-11 15 38 15" src="https://github.com/user-attachments/assets/676ea73b-687d-4ad0-aca2-7124e5baa6f8" />
+<img width="560" alt="스크린샷 2024-10-11 15 38 15" src="https://github.com/user-attachments/assets/676ea73b-687d-4ad0-aca2-7124e5baa6f8" />
 </div>
 <br><br>
 
